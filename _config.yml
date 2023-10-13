@@ -97,11 +97,12 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: shoka
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy: 
-  repo: git@github.com:Universeeeee/Universeeeee.github.io.git
+  repo: 
+    github: git@github.com:Universeeeee/Universeeeee.github.io.git
   type: git
-  branch: master
+  branch: main

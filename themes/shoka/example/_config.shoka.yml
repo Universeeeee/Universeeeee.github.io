@@ -78,7 +78,7 @@ audio:
         - https://music.163.com/#/playlist?id=2031842656
 
 # Dependencies: https://github.com/amehime/hexo-renderer-multi-markdown-it
-pangu: true
+pangu: false
 
 # ---------------------------------------------------------------
 # analytics & SEO Settings
