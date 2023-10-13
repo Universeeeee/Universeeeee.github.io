@@ -1,5 +1,5 @@
 # Alternate site name
-alternate: Universe Chen
+alternate: YUniverse
 
 open_graph:
   #twitter_id:
@@ -91,12 +91,12 @@ iconfont: "1832207_igi8uaupcus"
 menu:
   home: / || home
   # about: /about/ || user
-  # posts:
-  #   default: / || feather
-  #   archives: /archives/ || list-alt
-  #   categories: /categories/ || th
-  #   tags: /tags/ || tags
-  # friends: /friends/ || heart
+  posts:
+    default: / || feather
+    archives: /archives/ || list-alt
+    categories: /categories/ || th
+    tags: /tags/ || tags
+  friends: /friends/ || heart
   # links: /links/ || magic
 
 # Social Links
@@ -105,7 +105,7 @@ menu:
 # Value before `||` delimiter is the target permalink,
 # secend value is the name of Font icon.
 social:
-  #github: https://github.com/yourname || github || "#191717"
+  github: https://github.com/Universeeeee || github || "#191717"
   #google: https://plus.google.com/yourname || google
   #twitter: https://twitter.com/yourname || twitter || "#00aff0"
   #zhihu: https://www.zhihu.com/people/yourname || zhihu || "#1e88e5"
@@ -155,7 +155,7 @@ reward:
   account:
     wechatpay: /wechatpay.png
     alipay: /alipay.png
-    paypal: /paypal.png
+    # paypal: /paypal.png
 
 # TagCloud settings for tags page.
 tagcloud:
@@ -233,7 +233,7 @@ search:
     per_page: 10
 
 # Dependencies: https://github.com/amehime/hexo-renderer-multi-markdown-it
-pangu: false
+# pangu: false
 
 # Quicklink Support
 # For more information: https://github.com/GoogleChromeLabs/quicklink

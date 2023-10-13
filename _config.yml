@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
-author: John Doe
-language: en
-timezone: ''
+title: When the stars shine
+subtitle: Blog
+description: My blog, my life
+keywords: Tech, learn # edit for Theme.shoka
+author: YU
+language: zh-CN # 这里只可以选 zh-CN、zh-HK、zh-TW、ja、en 这几个格式
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://Universeeeee.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -68,6 +68,8 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  Java: Java
+  计算机科学: computer-science
 tag_map:
 
 # Metadata elements
@@ -106,3 +108,7 @@ deploy:
     github: git@github.com:Universeeeee/Universeeeee.github.io.git
   type: git
   branch: main
+
+autoprefixer:
+  exclude:
+    - '*.min.css'
