@@ -1,5 +1,6 @@
 ---
 title: 解决重复支付等类似问题--幂等数原理及工作方法
+cover: https://Universeeeee.github.io/_posts/cover.jpg
 ---
 
 # 一、问题
