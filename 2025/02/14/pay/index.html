@@ -142,7 +142,7 @@ YUniverse = When the stars shine = Blog</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h1><p>在支付系统中，订单可能由于网络问题、用户重复点击等原因被重复提交，这样类似的问题都可能给公司带来巨大的经济损失，最近无意中看到了这个问题的讨论，故此来小作研究，希望也给大家有所参考。</p>
+    <h1 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h1><p>在支付系统中，订单可能由于网络问题、用户重复点击等原因被重复提交，这样类似的问题都可能给公司带来巨大的经济损失，最近无意中看到了这个问题的讨论，故此来小作研究，在支付系统中，幂等性是一个非常重要的概念，它确保了在并发情况下，即使多个请求同时到达，系统也能正确地处理这些请求，避免重复操作带来的问题。</p>
 <h1 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h1><p>幂等性是指某个操作的重复执行不会改变最终结果。换句话说，无论这个操作执行多少次，<strong>结果都是相同的</strong>。<br><em>打个比方吧，</em><br>假设你有一把钥匙，用来打开家里的大门。无论你转动钥匙一次、两次，甚至十次，门只会在第一次转动时被打开。之后的转动不会再让门“重复打开”，因为门已经处于打开状态了。这就是一个幂等操作：不管你操作多少次，结果总是一样的——门始终是打开的。</p>
 <p><em>在支付场景下，这就像确保每次打开的都是同一扇门（订单）：</em></p>
 <ol>
@@ -169,7 +169,7 @@ YUniverse = When the stars shine = Blog</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2025-02-14 19:35:29" itemprop="dateModified" datetime="2025-02-14T19:35:29+08:00">2025-02-14</time>
+    <time title="修改时间：2025-02-14 20:01:39" itemprop="dateModified" datetime="2025-02-14T20:01:39+08:00">2025-02-14</time>
   </span>
 </div>
 
