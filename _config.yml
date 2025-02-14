@@ -69,8 +69,11 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-  Java: Java
+  Java: java
   计算机科学: computer-science
+  Bug记录: bug-record
+  杂记: note
+  架构设计: architecture-design
 tag_map:
 
 # Metadata elements
