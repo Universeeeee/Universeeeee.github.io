@@ -4,5 +4,8 @@
   "description": "",
   "author": "Ruri Shimotsuki",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "hexo-theme-shoka": "file:"
+  }
 }

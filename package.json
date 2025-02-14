@@ -1,8 +1,4 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
-  "private": true,
-  "homepage": "https://Universeeeee.github.io/",
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
@@ -10,10 +6,11 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.3.0"
   },
   "dependencies": {
-    "hexo": "^6.3.0",
+    "hexo": "^7.3.0",
+    "hexo-cli": "^4.3.2",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
@@ -21,8 +18,11 @@
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-nunjucks": "^2.0.0",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-landscape": "^1.0.0"
+    "hexo-theme-landscape": "^1.0.0",
+    "nunjucks": "^3.2.4",
+    "pangu": "^4.0.7"
   }
 }

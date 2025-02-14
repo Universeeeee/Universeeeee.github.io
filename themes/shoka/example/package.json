@@ -9,7 +9,7 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "5.2.0"
+    "version": "6.3.0"
   },
   "dependencies": {
     "hexo": "^5.0.0",
@@ -23,6 +23,7 @@
     "hexo-renderer-multi-markdown-it": "^0.1.5",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
+    "hexo-site": "file:",
     "hexo-symbols-count-time": "^0.7.1",
     "hexo-util": "^2.4.0"
   }
