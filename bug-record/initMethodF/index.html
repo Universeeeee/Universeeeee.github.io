@@ -30,7 +30,7 @@
 
 
   <title>
- |
+解决init method failed问题 - Bug记录 |
 YUniverse = When the stars shine = Blog</title>
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,7 +58,7 @@ YUniverse = When the stars shine = Blog</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
+  <h1 itemprop="name headline">解决init method failed问题
   </h1>
   
 <div class="meta">
@@ -99,14 +99,7 @@ YUniverse = When the stars shine = Blog</title>
 
       </div>
       <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/1.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/3.jpg"></li>
-        </ul>
+          <img src="/images/cover/cake1.jpg">
       </div>
     </header>
     <div id="waves">
@@ -130,7 +123,9 @@ YUniverse = When the stars shine = Blog</title>
     
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
-<span><a href="/">首页</a></span>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/bug-record/" itemprop="item" rel="index" title="分类于 Bug记录"><span itemprop="name">Bug记录</span></a>
+<meta itemprop="position" content="1" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
@@ -149,23 +144,20 @@ YUniverse = When the stars shine = Blog</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <p>-–</p>
-<p>title: 解决init method failed问题</p>
-<p>cover: images&#x2F;cover&#x2F;cake1.jpg</p>
-<p>categories:</p>
-<p> - [Bug记录]</p>
-<p>-–</p>
-<h1 id="错误背景"><a href="#错误背景" class="headerlink" title="错误背景"></a>错误背景</h1><p>笔者在建一个新的Spring cloud 项目时，出现的报错提示为：</p>
+    <h1 id="错误背景"><a href="#错误背景" class="headerlink" title="错误背景"></a>错误背景</h1><p>笔者在建一个新的 Spring cloud 项目时，出现的报错提示如下所示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invocation of init method failed； nested exception is java.lang.IllegalArgumentException: Property</span><br></pre></td></tr></table></figure>
-<h1 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h1><p>经过网上搜索后，主要说是controller和xml有重名方法，或者启动类有问题，如@SpringBootApplication()的括号里不能有东西。<br>检查后，锁定到是我在config类里已经写了@MapperScan()的注解：</p>
+
+<h1 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h1><p>经过网上搜索后，主要说是 controller 和 xml 有重名方法，或者启动类有问题，如@SpringBootApplication()的括号里不能有东西。<br>检查后，锁定到是我在 config 类里已经写了@MapperScan()的注解：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.demo.service.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBatisPlusConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p><strong>那么启动类里的@MapperScan()需要更改成@ComponentScan()。</strong><br>启动类里修改为：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.demo.service.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EduApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(EduApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者直接把config的@MapperScan删了，但感觉会失去配config的一些意义</p>
+
+<p>或者直接把 config 的@MapperScan 删了，但感觉会失去配 config 的一些意义</p>
 <p>修改后，即不再报错，但是项目还有点其他小问题</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h2><p>组件扫描注解，用来扫描@Controller @Service @Repository这类,主要就是定义扫描的路径从中找出标志了需要装配的类到Spring容器中</p>
-<h2 id="MapperScan"><a href="#MapperScan" class="headerlink" title="@MapperScan"></a>@MapperScan</h2><p>扫描mapper类的注解,就不用在每个mapper类上加@MapperScan了</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>这两个注解是可以同时使用的，但是需要改为@MapperScan（basePackages &#x3D; {}）的形式。<br>或者只使用@MapperScan（）去扫描mapper包，让项目启动自己去扫描swagger配置类的包。<br><strong>同一个类扫描的是同一路径会产生错误。</strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h2><p>组件扫描注解，用来扫描@Controller @Service @Repository 这类,主要就是定义扫描的路径从中找出标志了需要装配的类到 Spring 容器中</p>
+<h2 id="MapperScan"><a href="#MapperScan" class="headerlink" title="@MapperScan"></a>@MapperScan</h2><p>扫描 mapper 类的注解,就不用在每个 mapper 类上加@MapperScan 了</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>这两个注解是可以同时使用的，但是需要改为@MapperScan（basePackages &#x3D; {}）的形式。<br>或者只使用@MapperScan（）去扫描 mapper 包，让项目启动自己去扫描 swagger 配置类的包。<br><strong>同一个类扫描的是同一路径会产生错误。</strong></p>
 
   </div>
 
@@ -177,7 +169,7 @@ YUniverse = When the stars shine = Blog</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2025-02-16 18:31:07" itemprop="dateModified" datetime="2025-02-16T18:31:07+08:00">2025-02-16</time>
+    <time title="修改时间：2025-02-16 18:43:40" itemprop="dateModified" datetime="2025-02-16T18:43:40+08:00">2025-02-16</time>
   </span>
 </div>
 
@@ -208,7 +200,7 @@ YUniverse = When the stars shine = Blog</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://universeeeee.github.io/bug-record/initMethodF/" title="">http://universeeeee.github.io/bug-record/initMethodF/</a>
+    <a href="http://universeeeee.github.io/bug-record/initMethodF/" title="解决init method failed问题">http://universeeeee.github.io/bug-record/initMethodF/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -229,7 +221,7 @@ YUniverse = When the stars shine = Blog</title>
 
   <a href="/bug-record/disconnectVM/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;cover&#x2F;strawberry.jpg" title="解决Disconnected from the target VM">
   <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> </span>
+  <span class="category"><i class="ic i-flag"></i> Bug记录</span>
   <h3>解决Disconnected from the target VM</h3>
   </a>
 
@@ -254,6 +246,9 @@ YUniverse = When the stars shine = Blog</title>
           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">错误背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.</span> <span class="toc-text">错误原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">解决方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ComponentScan"><span class="toc-number">4.1.</span> <span class="toc-text">@ComponentScan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MapperScan"><span class="toc-number">4.2.</span> <span class="toc-text">@MapperScan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">4.3.</span> <span class="toc-text">注意</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/bug-record/disconnectVM/" rel="bookmark" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></li><li class="active"><a href="/bug-record/initMethodF/" rel="bookmark" title="解决init method failed问题">解决init method failed问题</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -272,7 +267,7 @@ YUniverse = When the stars shine = Blog</title>
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">2</span>
+        <span class="count">3</span>
         <span class="name">分类</span>
       </a>
     </div>
@@ -349,6 +344,17 @@ YUniverse = When the stars shine = Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
 </div>
 
     <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
@@ -358,30 +364,22 @@ YUniverse = When the stars shine = Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/bug-record/initMethodF/" title="未命名">未命名</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/java/" title="分类于 Java">Java</a>
+<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
     <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+</div>
+
+    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
   </li>
 
   </ul>

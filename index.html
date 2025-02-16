@@ -90,9 +90,9 @@
       <div id="imgs" class="pjax">
         <ul>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/1.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/3.jpg"></li>
         </ul>
@@ -154,7 +154,7 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
     </div>
     <div class="meta footer">
       <span>
-        <a href="/categories/computer-science/java/" itemprop="url" title="Java"><i class="ic i-flag"></i>Java</a>
+        <a href="/categories/architecture-design/mq/" itemprop="url" title="消息队列"><i class="ic i-flag"></i>消息队列</a>
       </span>
     </div>
     <a href="/architecture-design/mq/mqChoose/" itemprop="url" title="消息队列选型研究" class="btn">more...</a>
@@ -162,12 +162,37 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
 </article>
 
       </div>
+      <h2 class="divider">精选分类</h2>
+      <div class="cards">
+          
+<section class="item">
+  <div class="cover" data-background-image="/architecture-design/cover.jpg">
+    <h2 class="title">架构设计</h2>
+  </div>
+  <div class="info">
+    <div class="ribbon"><a href="/categories/architecture-design/" itemprop="url" title="架构设计">架构设计</a></div>
+    <div class="inner">
+        <ul class="posts">
+            <li><a title="消息队列" href="/categories/architecture-design/mq/">消息队列</a></li>
+            <li><a title="解决重复支付等类似问题--幂等数原理及工作方法" href="/architecture-design/pay/">解决重复支付等类似问题--幂等数原理及工作方法</a></li>
+        </ul>
+        <div class="meta footer">
+          <span>
+            <i class="ic i-file"></i>1 个子项，2 篇文章
+          </span>
+        </div>
+        <a href="/categories/architecture-design/" itemprop="url" title="架构设计" class="btn">more...</a>
+    </div>
+  </div>
+</section>
+
+      </div>
     <h2 class="divider">文章列表</h2>
     <div class="segments posts">
         
 <article class="item">
   <div class="cover">
-    <a href="/bug-record/initMethodF/" itemprop="url" title="未命名"><img data-src="https://Universeeeee.github.io/images/background/4.jpg"></a>
+    <a href="/bug-record/initMethodF/" itemprop="url" title="解决init method failed问题"><img data-src="/images/cover/cake1.jpg"></a>
   </div>
   <div class="info">
     
@@ -180,18 +205,19 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
   </span>
 </div>
 
-    <h3><a href="/bug-record/initMethodF/" itemprop="url" title="未命名">未命名</a></h3>
+    <h3><a href="/bug-record/initMethodF/" itemprop="url" title="解决init method failed问题">解决init method failed问题</a></h3>
     <div class="excerpt">
-        -–
-title: 解决init method failed问题
-cover: images&amp;#x2F;cover&amp;#x2F;cake1.jpg
-categories:
-- [Bug记录]
--–
-错误背景笔者在建一个新的Spring cloud 项目时，出现的报错提示为：
-1Invocation of init method failed； nested exception is java.lang.IllegalArgumentException:...
+        错误背景笔者在建一个新的 Spring cloud 项目时，出现的报错提示如下所示：
+1Invocation of init method failed； nested exception is java.lang.IllegalArgumentException: Property
+
+错误原因经过网上搜索后，主要说是 controller 和 xml 有重名方法，或者启动类有问题，如@SpringBootApplication()的括号里不能有东西。检查后，锁定到是我在 config...
     </div>
-    <a href="/bug-record/initMethodF/" itemprop="url" title="未命名" class="btn">more...</a>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bug-record/" itemprop="url" title="Bug记录"><i class="ic i-flag"></i>Bug记录</a>
+      </span>
+    </div>
+    <a href="/bug-record/initMethodF/" itemprop="url" title="解决init method failed问题" class="btn">more...</a>
   </div>
 </article>
 
@@ -222,6 +248,11 @@ categories:
 
 1taskkill...
     </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/bug-record/" itemprop="url" title="Bug记录"><i class="ic i-flag"></i>Bug记录</a>
+      </span>
+    </div>
     <a href="/bug-record/disconnectVM/" itemprop="url" title="解决Disconnected from the target VM" class="btn">more...</a>
   </div>
 </article>
@@ -246,6 +277,11 @@ categories:
     <div class="excerpt">
         一、问题在支付系统中，订单可能由于网络问题、用户重复点击等原因被重复提交，这样类似的问题都可能给公司带来巨大的经济损失，最近无意中看到了这个问题的讨论，故此来小作研究，在支付系统中，幂等性是一个非常重要的概念，它确保了在并发情况下，即使多个请求同时到达，系统也能正确地处理这些请求，避免重复操作带来的问题。
 二、原理幂等性是指某个操作的重复执行不会改变最终结果。换句话说，无论这个操作执行多少次，结果都是相同的。打个比方吧，假设你有一把钥匙，用来打开家里的大门。无论你转动钥匙一次、两次，甚至十次，门只会在第一次转动时被打开。之后的转动不会再让门“重复打开”，因为门已经处于打开状态了。这就是一个幂等...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/architecture-design/" itemprop="url" title="架构设计"><i class="ic i-flag"></i>架构设计</a>
+      </span>
     </div>
     <a href="/architecture-design/pay/" itemprop="url" title="解决重复支付等类似问题--幂等数原理及工作方法" class="btn">more...</a>
   </div>
@@ -287,7 +323,7 @@ categories:
     </div>
     <div class="item categories">
       <a href="/categories/">
-        <span class="count">2</span>
+        <span class="count">3</span>
         <span class="name">分类</span>
       </a>
     </div>
@@ -363,24 +399,7 @@ categories:
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/bug-record/initMethodF/" title="未命名">未命名</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
 </div>
 
     <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
@@ -390,9 +409,29 @@ categories:
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
 <i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/java/" title="分类于 Java">Java</a>
+<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
     <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
