@@ -1,5 +1,6 @@
 ---
-title: 解决重复支付等类似问题--幂等数原理及工作方法
+title: 消息队列选型研究
+cover: images/cover/mq.jpg
 ---
 
 ## 一、使用消息队列的目的
