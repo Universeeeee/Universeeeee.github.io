@@ -1,6 +1,9 @@
 ---
 title: 消息队列选型研究
+sticky: true
 cover: images/cover/mq.jpg
+categories:
+  - [计算机科学, Java]
 ---
 
 ## 一、使用消息队列的目的
@@ -9,7 +12,7 @@ cover: images/cover/mq.jpg
 2. 异步
 3. 削峰
 
-注：当然不光这些目的，消息队列的作用另开一篇详细记录吧。
+注：当然不光这些目的，消息队列的作用再另外详细记录吧。
 
 ## 二、消息队列的缺点
 
