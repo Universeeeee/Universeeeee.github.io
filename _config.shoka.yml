@@ -1,3 +1,38 @@
+alternate: YUniverse
+
+# Assets
+statics: / #//cdn.jsdelivr.net/gh/amehime/shoka@latest/
+
+open_graph:
+  #twitter_id:
+  #google_plus:
+  #fb_admins:
+  #fb_app_id:
+
+menu:
+  home: / || home
+  posts:
+    default: / || feather
+    archives: /archives/ || list-alt
+    categories: /categories/ || th
+    tags: /tags/ || tags
+  friends: /friends/ || heart
+
+sidebar:
+  position: left #侧边栏位置，right 会将头像和菜单移到右边
+  avatar: avatar.jpg
+
+# 页脚配置
+footer:
+  since: 2018 #你的博客的创建年份
+  icon:
+    name: YUniverse Blog
+    # Change the color of icon， using Hex Code.
+    color: "#ffc0cb"
+  # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
+  count: true
+  powered: true
+
 algolia:
   appId: COGAASTXVJ 
   apiKey: dcfc814659f3454c7767b1c6eeee6fee 
@@ -12,3 +47,5 @@ algolia:
     - gallery
     - photos
     - tags
+
+    
