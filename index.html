@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/3.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/1.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/1.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/3.jpg"></li>
         </ul>
       </div>
     </header>
@@ -121,7 +121,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/bug-record/disconnectVM/" itemprop="url" title="未命名"><img data-src="https://Universeeeee.github.io/images/background/5.jpg"></a>
+    <a href="/bug-record/disconnectVM/" itemprop="url" title="解决Disconnected from the target VM"><img data-src="/images/cover/strawberry.jpg"></a>
   </div>
   <div class="info">
     
@@ -134,18 +134,25 @@
   </span>
 </div>
 
-    <h3><a href="/bug-record/disconnectVM/" itemprop="url" title="未命名">未命名</a></h3>
+    <h3><a href="/bug-record/disconnectVM/" itemprop="url" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></h3>
     <div class="excerpt">
-        
+        问题背景及解决方法背景说明同样是在搭建项目时出现的问题，这个问题缘由很多，解决方法也各有不同，在此总结一下，供自己和大家查阅。
+问题缘由及解决方法1、端口占用这个问题出现之后，第一想法便是以为 127.0.0.1:XXXXX 中的端口号被占用。解决方法：即可以查找该端口：
+1netstat -ano|findstr 端口号
+
+如果该端口没有被占用，则什么都不会显示；如果该端口被占用，会有至少一个连接信息，一般找到是 LISTENING 的网络连接以及其后一列的进程号 PID。
+1tasklist|findstr 找到的PID（从进程列表中查找包含指定字符串的进程）
+
+1taskkill...
     </div>
-    <a href="/bug-record/disconnectVM/" itemprop="url" title="未命名" class="btn">more...</a>
+    <a href="/bug-record/disconnectVM/" itemprop="url" title="解决Disconnected from the target VM" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/architecture-design/mq/mqChoose/" itemprop="url" title="解决重复支付等类似问题--幂等数原理及工作方法"><img data-src="https://Universeeeee.github.io/images/background/2.jpg"></a>
+    <a href="/architecture-design/mq/mqChoose/" itemprop="url" title="解决重复支付等类似问题--幂等数原理及工作方法"><img data-src="https://Universeeeee.github.io/images/background/5.jpg"></a>
   </div>
   <div class="info">
     
@@ -322,7 +329,7 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/bug-record/disconnectVM/" title="未命名">未命名</a></span>
+    <span><a href="/architecture-design/mq/mqChoose/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
   </li>
 
       
@@ -331,7 +338,7 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/architecture-design/mq/mqChoose/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
+    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
   </li>
 
   </ul>
