@@ -395,7 +395,7 @@ YUniverse = When the stars shine = Blog</title>
 </li>
 </ul>
 <hr>
-<h2 id="八、综合选型建议"><a href="#八、综合选型建议" class="headerlink" title="八、综合选型建议"></a>八、综合选型建议</h2><table>
+<h2 id="综合选型建议"><a href="#综合选型建议" class="headerlink" title="综合选型建议"></a>综合选型建议</h2><table>
 <thead>
 <tr>
 <th align="left"><strong>公司规模&#x2F;场景</strong></th>
@@ -435,7 +435,7 @@ YUniverse = When the stars shine = Blog</title>
 </tr>
 </tbody></table>
 <hr>
-<h2 id="九、补充总结"><a href="#九、补充总结" class="headerlink" title="九、补充总结"></a>九、补充总结</h2><ol>
+<h2 id="补充总结"><a href="#补充总结" class="headerlink" title="补充总结"></a>补充总结</h2><ol>
 <li><strong>ActiveMQ</strong>：不推荐新项目使用，但 Artemis 版本仍有特定场景价值。</li>
 <li><strong>RabbitMQ</strong>：Erlang 不构成主要运维障碍，中小团队可控性足够。</li>
 <li><strong>RocketMQ</strong>：社区风险低，适用场景不仅限于大公司，但需权衡文档和部署成本。</li>
@@ -443,7 +443,7 @@ YUniverse = When the stars shine = Blog</title>
 <li><strong>遗漏点</strong>：未提及 Pulsar、云托管服务、Redis Streams 等新兴方案。</li>
 </ol>
 <hr>
-<h2 id="十、建议"><a href="#十、建议" class="headerlink" title="十、建议"></a>十、建议</h2><ul>
+<h2 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h2><ul>
 <li><strong>技术选型公式</strong>：<br><strong>业务需求（功能+性能） &gt; 团队技术栈 &gt; 运维成本 &gt; 社区生态 &gt; 厂商绑定风险</strong></li>
 <li><strong>推荐动作</strong>：<ul>
 <li>列出业务的核心需求（如是否需要事务、顺序消息）。</li>
@@ -463,7 +463,7 @@ YUniverse = When the stars shine = Blog</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2025-02-16 18:51:16" itemprop="dateModified" datetime="2025-02-16T18:51:16+08:00">2025-02-16</time>
+    <time title="修改时间：2025-02-16 19:43:18" itemprop="dateModified" datetime="2025-02-16T19:43:18+08:00">2025-02-16</time>
   </span>
 </div>
 
@@ -545,7 +545,7 @@ YUniverse = When the stars shine = Blog</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">使用消息队列的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">消息队列的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">主流消息队列对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%80%89%E5%9E%8B%E7%BB%B4%E5%BA%A6"><span class="toc-number">4.</span> <span class="toc-text">核心选型维度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%8D%8F%E8%AE%AE"><span class="toc-number">4.1.</span> <span class="toc-text">消息模型与协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E9%9C%80%E6%B1%82"><span class="toc-number">4.2.</span> <span class="toc-text">性能需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">4.3.</span> <span class="toc-text">消息可靠性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%B6%88%E6%81%AF"><span class="toc-number">4.4.</span> <span class="toc-text">顺序消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF"><span class="toc-number">4.5.</span> <span class="toc-text">事务消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%80%A7%E4%B8%8E%E8%BF%90%E7%BB%B4"><span class="toc-number">4.6.</span> <span class="toc-text">扩展性与运维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%80%81%E4%B8%8E%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81"><span class="toc-number">4.7.</span> <span class="toc-text">生态与语言支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%9C%BA%E6%99%AF%E6%8E%A8%E8%8D%90"><span class="toc-number">4.8.</span> <span class="toc-text">典型场景推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86"><span class="toc-number">4.8.1.</span> <span class="toc-text">1. 大数据日志采集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%94%B5%E5%95%86%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.8.2.</span> <span class="toc-text">2. 电商交易系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-IoT-%E8%AE%BE%E5%A4%87%E9%80%9A%E4%BF%A1"><span class="toc-number">4.8.3.</span> <span class="toc-text">3. IoT 设备通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E8%A7%A3%E8%80%A6"><span class="toc-number">4.8.4.</span> <span class="toc-text">4. 微服务异步解耦</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E9%87%91%E8%9E%8D%E7%BA%A7%E9%AB%98%E5%8F%AF%E9%9D%A0%E5%9C%BA%E6%99%AF"><span class="toc-number">4.8.5.</span> <span class="toc-text">5. 金融级高可靠场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E4%BA%91%E5%8E%9F%E7%94%9F-Serverless-%E5%9C%BA%E6%99%AF"><span class="toc-number">4.8.6.</span> <span class="toc-text">6. 云原生 Serverless 场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-number">5.</span> <span class="toc-text">避坑指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">7.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%85%B3%E4%BA%8E-ActiveMQ"><span class="toc-number">7.1.</span> <span class="toc-text">**（一）关于 ActiveMQ **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%85%B3%E4%BA%8E-RabbitMQ"><span class="toc-number">7.2.</span> <span class="toc-text">**（二）关于 RabbitMQ **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E5%85%B3%E4%BA%8E-RocketMQ"><span class="toc-number">7.3.</span> <span class="toc-text">**（三）关于 RocketMQ **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E5%85%B3%E4%BA%8E-Kafka"><span class="toc-number">7.4.</span> <span class="toc-text">**（四）关于 Kafka **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6"><span class="toc-number">7.5.</span> <span class="toc-text">（五）其他框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%85%B6%E4%BB%96-ulsar"><span class="toc-number">7.5.1.</span> <span class="toc-text">1、其他 ulsar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Redis-Streams"><span class="toc-number">7.5.2.</span> <span class="toc-text">2. Redis Streams</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BA%91%E5%8E%82%E5%95%86%E9%98%9F%E5%88%97%E6%9C%8D%E5%8A%A1"><span class="toc-number">7.5.3.</span> <span class="toc-text">3. 云厂商队列服务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%BB%BC%E5%90%88%E9%80%89%E5%9E%8B%E5%BB%BA%E8%AE%AE"><span class="toc-number">8.</span> <span class="toc-text">八、综合选型建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E8%A1%A5%E5%85%85%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">九、补充总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%BB%BA%E8%AE%AE"><span class="toc-number">10.</span> <span class="toc-text">十、建议</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">使用消息队列的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">消息队列的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">主流消息队列对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%80%89%E5%9E%8B%E7%BB%B4%E5%BA%A6"><span class="toc-number">4.</span> <span class="toc-text">核心选型维度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%8D%8F%E8%AE%AE"><span class="toc-number">4.1.</span> <span class="toc-text">消息模型与协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E9%9C%80%E6%B1%82"><span class="toc-number">4.2.</span> <span class="toc-text">性能需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="toc-number">4.3.</span> <span class="toc-text">消息可靠性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%B6%88%E6%81%AF"><span class="toc-number">4.4.</span> <span class="toc-text">顺序消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E6%B6%88%E6%81%AF"><span class="toc-number">4.5.</span> <span class="toc-text">事务消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E6%80%A7%E4%B8%8E%E8%BF%90%E7%BB%B4"><span class="toc-number">4.6.</span> <span class="toc-text">扩展性与运维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%80%81%E4%B8%8E%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81"><span class="toc-number">4.7.</span> <span class="toc-text">生态与语言支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%9C%BA%E6%99%AF%E6%8E%A8%E8%8D%90"><span class="toc-number">4.8.</span> <span class="toc-text">典型场景推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86"><span class="toc-number">4.8.1.</span> <span class="toc-text">1. 大数据日志采集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%94%B5%E5%95%86%E4%BA%A4%E6%98%93%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.8.2.</span> <span class="toc-text">2. 电商交易系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-IoT-%E8%AE%BE%E5%A4%87%E9%80%9A%E4%BF%A1"><span class="toc-number">4.8.3.</span> <span class="toc-text">3. IoT 设备通信</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%82%E6%AD%A5%E8%A7%A3%E8%80%A6"><span class="toc-number">4.8.4.</span> <span class="toc-text">4. 微服务异步解耦</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E9%87%91%E8%9E%8D%E7%BA%A7%E9%AB%98%E5%8F%AF%E9%9D%A0%E5%9C%BA%E6%99%AF"><span class="toc-number">4.8.5.</span> <span class="toc-text">5. 金融级高可靠场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E4%BA%91%E5%8E%9F%E7%94%9F-Serverless-%E5%9C%BA%E6%99%AF"><span class="toc-number">4.8.6.</span> <span class="toc-text">6. 云原生 Serverless 场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-number">5.</span> <span class="toc-text">避坑指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">7.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%85%B3%E4%BA%8E-ActiveMQ"><span class="toc-number">7.1.</span> <span class="toc-text">**（一）关于 ActiveMQ **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%85%B3%E4%BA%8E-RabbitMQ"><span class="toc-number">7.2.</span> <span class="toc-text">**（二）关于 RabbitMQ **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E5%85%B3%E4%BA%8E-RocketMQ"><span class="toc-number">7.3.</span> <span class="toc-text">**（三）关于 RocketMQ **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E5%85%B3%E4%BA%8E-Kafka"><span class="toc-number">7.4.</span> <span class="toc-text">**（四）关于 Kafka **</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6"><span class="toc-number">7.5.</span> <span class="toc-text">（五）其他框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E5%85%B6%E4%BB%96-ulsar"><span class="toc-number">7.5.1.</span> <span class="toc-text">1、其他 ulsar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Redis-Streams"><span class="toc-number">7.5.2.</span> <span class="toc-text">2. Redis Streams</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BA%91%E5%8E%82%E5%95%86%E9%98%9F%E5%88%97%E6%9C%8D%E5%8A%A1"><span class="toc-number">7.5.3.</span> <span class="toc-text">3. 云厂商队列服务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E9%80%89%E5%9E%8B%E5%BB%BA%E8%AE%AE"><span class="toc-number">8.</span> <span class="toc-text">综合选型建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">补充总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E8%AE%AE"><span class="toc-number">10.</span> <span class="toc-text">建议</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -649,11 +649,9 @@ YUniverse = When the stars shine = Blog</title>
     
 <div class="breadcrumb">
 <a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
+    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
   </li>
 
       
@@ -670,20 +668,22 @@ YUniverse = When the stars shine = Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
+    <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
 </div>
 
-    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
+    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
   </li>
 
   </ul>
