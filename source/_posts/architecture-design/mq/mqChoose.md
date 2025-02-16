@@ -3,7 +3,9 @@ title: 消息队列选型研究
 sticky: true
 cover: images/cover/mq.jpg
 categories:
-  - [计算机科学, Java]
+  - [架构设计, 消息队列]
+audio:
+  - https://music.163.com/song?id=1387098940
 ---
 
 ## 一、使用消息队列的目的

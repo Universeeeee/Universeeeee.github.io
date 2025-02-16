@@ -1,6 +1,8 @@
 ---
 title: 解决重复支付等类似问题--幂等数原理及工作方法
 cover: images/cover/pay.jpg
+categories:
+  - [架构设计]
 ---
 
 # 一、问题

@@ -1,0 +1,14 @@
+algolia:
+  appId: COGAASTXVJ 
+  apiKey: dcfc814659f3454c7767b1c6eeee6fee 
+  adminApiKey: 6e2adb89b63531be3177f9b0131441b5 #Admin API Key
+  chunkSize: 5000
+  indexName: "shoka"
+  fields:
+    - title
+    - path
+    - categories
+    - content:strip:truncate，0，2000
+    - gallery
+    - photos
+    - tags

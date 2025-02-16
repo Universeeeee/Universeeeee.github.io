@@ -74,6 +74,7 @@ category_map:
   Bug记录: bug-record
   杂记: note
   架构设计: architecture-design
+  消息队列: mq
 tag_map:
 
 # Metadata elements
@@ -116,3 +117,8 @@ deploy:
 autoprefixer:
   exclude:
     - '*.min.css'
+
+algolia_search:
+  enable: true
+  hits:
+    per_page: 6

@@ -1,6 +1,8 @@
 ---
 title: 解决Disconnected from the target VM
 cover: images/cover/strawberry.jpg
+categories:
+  - [Bug记录]
 ---
 
 # 问题背景及解决方法
