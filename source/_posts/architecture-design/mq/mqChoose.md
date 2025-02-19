@@ -1,6 +1,5 @@
 ---
 title: 消息队列选型研究
-sticky: true
 cover: images/cover/mq.jpg
 categories:
   - [架构设计, 消息队列]

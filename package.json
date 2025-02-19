@@ -18,7 +18,7 @@
     "hexo-generator-index": "^3.0.0",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^6.0.0",
+    "hexo-renderer-multi-markdown-it": "^0.1.5",
     "hexo-renderer-nunjucks": "^2.0.0",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
@@ -27,6 +27,7 @@
     "instantsearch.css": "^8.5.1",
     "instantsearch.js": "^4.77.3",
     "nunjucks": "^3.2.4",
-    "pangu": "^4.0.7"
+    "pangu": "^4.0.7",
+    "puppeteer": "^24.2.1"
   }
 }

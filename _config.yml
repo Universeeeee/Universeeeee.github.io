@@ -75,6 +75,7 @@ category_map:
   杂记: note
   架构设计: architecture-design
   消息队列: mq
+  AI: ai
 tag_map:
 
 # Metadata elements
