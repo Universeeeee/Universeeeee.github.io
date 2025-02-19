@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/3.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/1.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
         </ul>
       </div>
     </header>
@@ -136,14 +136,15 @@
 
     <h3><a href="/ai/aiDeploy/" itemprop="url" title="Deep seek本地部署">Deep seek本地部署</a></h3>
     <div class="excerpt">
-        前言（碎碎念有点长，可以左侧导航到主题内容）
+        # 前言
+（碎碎念有点长，可以左侧导航到主题内容）
 GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器等等名头，很多讨论人工智能要替代人类了，但事实上很多人靠帮开 GPT 账号和所谓的 GPT 攻略挣得盆满钵满，替不替代都是后话了。
 到了百度、豆包、通义千问都不温不火，反而 kimi 在程序员中间使用率高点（也可能是我个人偏好），我在 GPT 限制的时候会更喜欢用 kimi 来协助写代码。
-有些会说 ai 生成代码会降低自己的编码技术，其实我觉得那些简单的代码让它们生成也没关系，很多时候还是要靠自己找到问题和屡清逻辑，发现问题、找到问题、给出思路或者结合思路也是人的核心能力，现在让公司的...
+有些会说 ai...
     </div>
     <div class="meta footer">
       <span>
-        <a href="/categories/AI/" itemprop="url" title="AI"><i class="ic i-flag"></i>AI</a>
+        <a href="/categories/ai/" itemprop="url" title="AI"><i class="ic i-flag"></i>AI</a>
       </span>
     </div>
     <a href="/ai/aiDeploy/" itemprop="url" title="Deep seek本地部署" class="btn">more...</a>
@@ -153,6 +154,27 @@ GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器�
       </div>
       <h2 class="divider">精选分类</h2>
       <div class="cards">
+          
+<section class="item">
+  <div class="cover" data-background-image="/ai/cover.jpg">
+    <h2 class="title">AI</h2>
+  </div>
+  <div class="info">
+    <div class="ribbon"><a href="/categories/ai/" itemprop="url" title="AI">AI</a></div>
+    <div class="inner">
+        <ul class="posts">
+            <li><a title="Deep seek本地部署" href="/ai/aiDeploy/">Deep seek本地部署</a></li>
+        </ul>
+        <div class="meta footer">
+          <span>
+            <i class="ic i-file"></i>1 篇文章
+          </span>
+        </div>
+        <a href="/categories/ai/" itemprop="url" title="AI" class="btn">more...</a>
+    </div>
+  </div>
+</section>
+
           
 <section class="item">
   <div class="cover" data-background-image="/architecture-design/cover.jpg">
@@ -218,10 +240,16 @@ GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器�
 
     <h3><a href="/architecture-design/mq/mqWhy/" itemprop="url" title="消息队列的作用">消息队列的作用</a></h3>
     <div class="excerpt">
-        消息队列就像一个万能中间人，它不仅解决系统间的“沟通问题”，还能让整个架构像智能交通系统一样灵活高效。以下用生活化的比喻和实际案例来更深入体会消息队列的 核心价值：
-核心作用
-解耦：像“快递柜”一样隔离系统
-比喻：A 系统要给 B、C、D...
+        消息队列就像一个万能中间人，它不仅解决系统间的 “沟通问题”，还能让整个架构像智能交通系统一样灵活高效。以下用生活化的比喻和实际案例来更深入体会消息队列的 核心价值：
+# 核心作用
+
+# 解耦：像 “快递柜” 一样隔离系统
+
+比喻：A 系统要给 B、C、D 系统发通知，不用挨家挨户敲门，直接丢进快递柜（消息队列），收件人自己来取。
+实际案例：电商下单后，订单系统只需发一条消息，积分系统、库存系统、物流系统各自独立处理，新增一个短信通知系统也无需修改订单代码。
+解决的问题：系统间直接调用导致的 “蜘蛛网式依赖”，避免牵一发而动全身。
+
+#...
     </div>
     <div class="meta footer">
       <span>
@@ -250,10 +278,12 @@ GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器�
 
     <h3><a href="/bug-record/initMethodF/" itemprop="url" title="解决init method failed问题">解决init method failed问题</a></h3>
     <div class="excerpt">
-        错误背景笔者在建一个新的 Spring cloud 项目时，出现的报错提示如下所示：
+        # 错误背景
+笔者在建一个新的 Spring cloud 项目时，出现的报错提示如下所示：
 1Invocation of init method failed； nested exception is java.lang.IllegalArgumentException: Property
-
-错误原因经过网上搜索后，主要说是 controller 和 xml 有重名方法，或者启动类有问题，如@SpringBootApplication()的括号里不能有东西。检查后，锁定到是我在 config...
+# 错误原因
+经过网上搜索后，主要说是 controller 和 xml 有重名方法，或者启动类有问题，如 @SpringBootApplication () 的括号里不能有东西。
+检查后，锁定到是我在 config 类里已经写了 @MapperScan ()...
     </div>
     <div class="meta footer">
       <span>
@@ -282,14 +312,18 @@ GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器�
 
     <h3><a href="/bug-record/disconnectVM/" itemprop="url" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></h3>
     <div class="excerpt">
-        问题背景及解决方法背景说明同样是在搭建项目时出现的问题，这个问题缘由很多，解决方法也各有不同，在此总结一下，供自己和大家查阅。
-问题缘由及解决方法1、端口占用这个问题出现之后，第一想法便是以为 127.0.0.1:XXXXX 中的端口号被占用。解决方法：即可以查找该端口：
+        # 问题背景及解决方法
+# 背景说明
+同样是在搭建项目时出现的问题，这个问题缘由很多，解决方法也各有不同，在此总结一下，供自己和大家查阅。
+# 问题缘由及解决方法
+# 1、端口占用
+这个问题出现之后，第一想法便是以为 127.0.0.1:XXXXX 中的端口号被占用。
+解决方法：
+即可以查找该端口：
 1netstat -ano|findstr 端口号
-
-如果该端口没有被占用，则什么都不会显示；如果该端口被占用，会有至少一个连接信息，一般找到是 LISTENING 的网络连接以及其后一列的进程号 PID。
-1tasklist|findstr 找到的PID（从进程列表中查找包含指定字符串的进程）
-
-1taskkill...
+如果该端口没有被占用，则什么都不会显示；
+如果该端口被占用，会有至少一个连接信息，一般找到是 LISTENING 的网络连接以及其后一列的进程号 PID。
+1tasklist|findstr...
     </div>
     <div class="meta footer">
       <span>
@@ -318,13 +352,15 @@ GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器�
 
     <h3><a href="/architecture-design/mq/mqChoose/" itemprop="url" title="消息队列选型研究">消息队列选型研究</a></h3>
     <div class="excerpt">
-        使用消息队列的目的
+        # 使用消息队列的目的
+
 解耦
 异步
 削峰
 
 注：当然不光这些目的，消息队列的作用再另外详细记录吧。
-消息队列的缺点
+# 消息队列的缺点
+
 系统可用性降低
 系统引入的外部依赖越多，越容易挂掉。万一 消息队列挂了可能会造成整套系统崩溃，需要保证消息队列的高可用。
 
@@ -332,7 +368,9 @@ GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器�
 需要保证消息没有重复消费，需要处理消息丢失的情况，需要保证消息传递的顺序性。
 
 一致性问题
-A 系统处理完了直接返回成功了，都以为这个请求就成功了；但是问题是，要是 BCD 三个系统那里，BD 两个系统写库成功了，结果 C...
+A 系统处理完了直接返回成功了，都以为这个请求就成功了；但是问题是，要是 BCD 三个系统那里，BD 两个系统写库成功了，结果 C 系统写库失败了，这数据就不一致了。
+
+#...
     </div>
     <div class="meta footer">
       <span>
@@ -361,8 +399,12 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
 
     <h3><a href="/architecture-design/pay/" itemprop="url" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></h3>
     <div class="excerpt">
-        一、问题在支付系统中，订单可能由于网络问题、用户重复点击等原因被重复提交，这样类似的问题都可能给公司带来巨大的经济损失，最近无意中看到了这个问题的讨论，故此来小作研究，在支付系统中，幂等性是一个非常重要的概念，它确保了在并发情况下，即使多个请求同时到达，系统也能正确地处理这些请求，避免重复操作带来的问题。
-二、原理幂等性是指某个操作的重复执行不会改变最终结果。换句话说，无论这个操作执行多少次，结果都是相同的。打个比方吧，假设你有一把钥匙，用来打开家里的大门。无论你转动钥匙一次、两次，甚至十次，门只会在第一次转动时被打开。之后的转动不会再让门“重复打开”，因为门已经处于打开状态了。这就是一个幂等...
+        # 一、问题
+在支付系统中，订单可能由于网络问题、用户重复点击等原因被重复提交，这样类似的问题都可能给公司带来巨大的经济损失，最近无意中看到了这个问题的讨论，故此来小作研究，在支付系统中，幂等性是一个非常重要的概念，它确保了在并发情况下，即使多个请求同时到达，系统也能正确地处理这些请求，避免重复操作带来的问题。
+# 二、原理
+幂等性是指某个操作的重复执行不会改变最终结果。换句话说，无论这个操作执行多少次，结果都是相同的。
+打个比方吧，
+假设你有一把钥匙，用来打开家里的大门。无论你转动钥匙一次、两次，甚至十次，门只会在第一次转动时被打开。之后的转动不会再让门...
     </div>
     <div class="meta footer">
       <span>
@@ -485,42 +527,12 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/AI/" title="分类于 AI">AI</a>
-</div>
-
-    <span><a href="/ai/aiDeploy/" title="Deep seek本地部署">Deep seek本地部署</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
-</div>
-
-    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
 <i class="ic i-angle-right"></i>
 <a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
     <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
-</div>
-
-    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
   </li>
 
       
@@ -545,6 +557,36 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
     <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
   </li>
 
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ai/" title="分类于 AI">AI</a>
+</div>
+
+    <span><a href="/ai/aiDeploy/" title="Deep seek本地部署">Deep seek本地部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
+  </li>
+
   </ul>
 </div>
 <div>
@@ -567,7 +609,7 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">14k 字</span>
+    <span title="站点总字数">13k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">

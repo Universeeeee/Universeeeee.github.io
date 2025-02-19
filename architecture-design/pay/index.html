@@ -144,22 +144,41 @@ YUniverse = When the stars shine = Blog</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="一、问题"><a href="#一、问题" class="headerlink" title="一、问题"></a>一、问题</h1><p>在支付系统中，订单可能由于网络问题、用户重复点击等原因被重复提交，这样类似的问题都可能给公司带来巨大的经济损失，最近无意中看到了这个问题的讨论，故此来小作研究，在支付系统中，幂等性是一个非常重要的概念，它确保了在并发情况下，即使多个请求同时到达，系统也能正确地处理这些请求，避免重复操作带来的问题。</p>
-<h1 id="二、原理"><a href="#二、原理" class="headerlink" title="二、原理"></a>二、原理</h1><p>幂等性是指某个操作的重复执行不会改变最终结果。换句话说，无论这个操作执行多少次，<strong>结果都是相同的</strong>。<br><em>打个比方吧，</em><br>假设你有一把钥匙，用来打开家里的大门。无论你转动钥匙一次、两次，甚至十次，门只会在第一次转动时被打开。之后的转动不会再让门“重复打开”，因为门已经处于打开状态了。这就是一个幂等操作：不管你操作多少次，结果总是一样的——门始终是打开的。</p>
+    <h1 id="一-问题"><a class="markdownIt-Anchor" href="#一-问题">#</a> 一、问题</h1>
+<p>在支付系统中，订单可能由于网络问题、用户重复点击等原因被重复提交，这样类似的问题都可能给公司带来巨大的经济损失，最近无意中看到了这个问题的讨论，故此来小作研究，在支付系统中，幂等性是一个非常重要的概念，它确保了在并发情况下，即使多个请求同时到达，系统也能正确地处理这些请求，避免重复操作带来的问题。</p>
+<h1 id="二-原理"><a class="markdownIt-Anchor" href="#二-原理">#</a> 二、原理</h1>
+<p>幂等性是指某个操作的重复执行不会改变最终结果。换句话说，无论这个操作执行多少次，<strong>结果都是相同的</strong>。<br>
+<em>打个比方吧，</em><br>
+假设你有一把钥匙，用来打开家里的大门。无论你转动钥匙一次、两次，甚至十次，门只会在第一次转动时被打开。之后的转动不会再让门 “重复打开”，因为门已经处于打开状态了。这就是一个幂等操作：不管你操作多少次，结果总是一样的 —— 门始终是打开的。</p>
 <p><em>在支付场景下，这就像确保每次打开的都是同一扇门（订单）：</em></p>
 <ol>
 <li>唯一标识符：门对应你的订单，每扇门都有一个特定的钥匙（订单号），系统通过订单号识别每个支付请求。</li>
-<li>状态检查：在你试图“打开”门时（处理支付请求），系统会先检查门是不是已经开了（是否支付过）。如果已经开了（支付成功），它就不会再重复操作。</li>
+<li>状态检查：在你试图 “打开” 门时（处理支付请求），系统会先检查门是不是已经开了（是否支付过）。如果已经开了（支付成功），它就不会再重复操作。</li>
 <li>重复无害：即使你多次尝试打开这扇门（发起支付请求），最终的状态（订单支付成功）不会因为重复请求而发生变化。</li>
 </ol>
-<h1 id="三、工作方式"><a href="#三、工作方式" class="headerlink" title="三、工作方式"></a>三、工作方式</h1><ol>
-<li>幂等操作设计<br><strong>确保操作本身具有幂等性</strong>。例如，在支付订单时，支付操作的逻辑应该是幂等的，即无论调用多少次，最终结果都是相同的。</li>
-<li>唯一标识符（ID）<br>在每个请求中包含一个<strong>唯一的标识符</strong>（如 UUID 或订单号）。在处理请求时，系统首先检查是否已经处理过该标识符。如果是，则直接返回之前的处理结果，而不是重复处理。</li>
-<li>数据库锁<br>在数据库层面使用锁机制（如行锁、表锁）来防止同一条记录被同时处理。这样，即使多个请求同时到达，只有一个请求会被处理，其他请求会被阻塞或返回错误。</li>
-<li>重复提交检测<br>在服务器端维护一个<strong>状态表</strong>（如 Redis 缓存或数据库表），记录已经处理过的请求的唯一标识符和状态。当收到新的请求时，首先检查该标识符是否存在于状态表中。如果存在，则说明该请求已处理过，直接返回结果。</li>
-<li>幂等性中间件<br>使用中间件来处理幂等性。例如，在微服务架构中，可以使用 API 网关或中间件来检查和保证请求的幂等性。</li>
+<h1 id="三-工作方式"><a class="markdownIt-Anchor" href="#三-工作方式">#</a> 三、工作方式</h1>
+<ol>
+<li>幂等操作设计<br>
+<strong>确保操作本身具有幂等性</strong>。例如，在支付订单时，支付操作的逻辑应该是幂等的，即无论调用多少次，最终结果都是相同的。</li>
+<li>唯一标识符（ID）<br>
+在每个请求中包含一个<strong>唯一的标识符</strong>（如 UUID 或订单号）。在处理请求时，系统首先检查是否已经处理过该标识符。如果是，则直接返回之前的处理结果，而不是重复处理。</li>
+<li>数据库锁<br>
+在数据库层面使用锁机制（如行锁、表锁）来防止同一条记录被同时处理。这样，即使多个请求同时到达，只有一个请求会被处理，其他请求会被阻塞或返回错误。</li>
+<li>重复提交检测<br>
+在服务器端维护一个<strong>状态表</strong>（如 Redis 缓存或数据库表），记录已经处理过的请求的唯一标识符和状态。当收到新的请求时，首先检查该标识符是否存在于状态表中。如果存在，则说明该请求已处理过，直接返回结果。</li>
+<li>幂等性中间件<br>
+使用中间件来处理幂等性。例如，在微服务架构中，可以使用 API 网关或中间件来检查和保证请求的幂等性。</li>
 </ol>
-<h1 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h1><p>假设我们有一个支付订单的接口，它接收订单请求并处理支付：<br><strong>1、请求处理逻辑：</strong><br>接收请求时，检查请求中是否包含唯一标识符。<br>查询数据库或缓存，检查该标识符是否已经处理过。<br>如果已经处理过，直接返回结果；如果未处理，执行支付操作，并记录该标识符及处理状态。<br><strong>2、唯一标识符的生成：</strong><br>客户端生成一个唯一的标识符，并将其包含在请求中。这个标识符可以是 UUID、订单号或其他唯一值。<br><strong>3、幂等性状态存储：</strong><br>使用 Redis、数据库表或其他存储介质，记录每个唯一标识符的处理状态（如已处理、未处理）。</p>
+<h1 id="四-示例"><a class="markdownIt-Anchor" href="#四-示例">#</a> 四、示例</h1>
+<p>假设我们有一个支付订单的接口，它接收订单请求并处理支付：<br>
+<strong>1、请求处理逻辑：</strong><br>
+接收请求时，检查请求中是否包含唯一标识符。<br>
+查询数据库或缓存，检查该标识符是否已经处理过。<br>
+如果已经处理过，直接返回结果；如果未处理，执行支付操作，并记录该标识符及处理状态。<br>
+<strong>2、唯一标识符的生成：</strong><br>
+客户端生成一个唯一的标识符，并将其包含在请求中。这个标识符可以是 UUID、订单号或其他唯一值。<br>
+<strong>3、幂等性状态存储：</strong><br>
+使用 Redis、数据库表或其他存储介质，记录每个唯一标识符的处理状态（如已处理、未处理）。</p>
 
   </div>
 
@@ -245,7 +264,7 @@ YUniverse = When the stars shine = Blog</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">一、问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">二、原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">三、工作方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">四、示例</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80-%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text"> 一、问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text"> 二、原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89-%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text"> 三、工作方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B-%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text"> 四、示例</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
@@ -358,22 +377,20 @@ YUniverse = When the stars shine = Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
 </div>
 
-    <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
+    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+<a href="/categories/ai/" title="分类于 AI">AI</a>
 </div>
 
-    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
+    <span><a href="/ai/aiDeploy/" title="Deep seek本地部署">Deep seek本地部署</a></span>
   </li>
 
       
@@ -390,20 +407,22 @@ YUniverse = When the stars shine = Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
+    <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/AI/" title="分类于 AI">AI</a>
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
 </div>
 
-    <span><a href="/ai/aiDeploy/" title="Deep seek本地部署">Deep seek本地部署</a></span>
+    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
   </li>
 
   </ul>
@@ -428,7 +447,7 @@ YUniverse = When the stars shine = Blog</title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">14k 字</span>
+    <span title="站点总字数">13k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
