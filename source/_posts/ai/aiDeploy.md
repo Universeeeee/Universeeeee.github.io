@@ -60,7 +60,7 @@ GPT 出来爆火了一轮，心灵导师、代码生成器、文案创业神器�
 
 # 部署流程（以 DeepSeek-7B-Chat 为例）
 
-### 1. 环境准备
+## 环境准备
 
 ```
 # 安装CUDA 11.8（必须匹配PyTorch版本）
@@ -77,7 +77,7 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 pip install transformers==4.33.0 accelerate sentencepiece einops
 ```
 
-### 2. 模型下载
+## 模型下载
 
 ```
 # 使用官方提供的下载工具（避免断线）
@@ -89,7 +89,7 @@ Get-FileHash .\models\pytorch_model.bin -Algorithm SHA256
 # 应匹配官方提供的 2a8b4c...（具体值需查最新文档）
 ```
 
-### 3. 配置文件调整
+## 配置文件调整
 
 修改 `model_config.yaml`：
 
@@ -101,7 +101,7 @@ use_flash_attention: false  # Win暂不支持Flash Attention
 disk_cache_path: "D:\\deepseek_cache"  # 使用NTFS格式路径
 ```
 
-### 4. 启动推理服务
+## 启动推理服务
 
 ```
 # 加载优化后的Windows版代码
@@ -116,7 +116,7 @@ server.start(port=8080, api_key="your_secret_key")
 
 # 常见问题解决方案
 
-### 1. CUDA 内存不足
+## CUDA 内存不足
 
 ```
 # 启用8bit量化（降低显存占用）
@@ -130,7 +130,7 @@ model = AutoModelForCausalLM.from_pretrained(
 wmic pagefileset create name="C:\\pagefile.sys",initialSize=32768,maximumSize=32768
 ```
 
-### 2. DLL 加载错误
+## DLL 加载错误
 
 - 安装 VC++ 2022 可再发行组件包
 - 更新 NVIDIA 驱动至 545+
@@ -140,7 +140,7 @@ wmic pagefileset create name="C:\\pagefile.sys",initialSize=32768,maximumSize=32
 $env:PYTORCH_CUDA_ALLOC_CONF = "max_split_size_mb:128"
 ```
 
-### 3. 中文乱码问题
+## 中文乱码问题
 
 ```
 # 在代码首部添加：
@@ -151,7 +151,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 性能优化技巧
 
-1. **显存优化方案**
+## 显存优化方案
 
 ```
 # 梯度检查点技术（13B+模型推荐）
@@ -161,7 +161,7 @@ model.gradient_checkpointing_enable()
 reg add HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management /v PagedPoolSize /t REG_DWORD /d 0xFFFFFFFF
 ```
 
-1. **多卡部署配置**
+## 多卡部署配置
 
 ```
 # 修改accelerate配置文件
@@ -174,14 +174,14 @@ device_ids: all
 
 # 安全注意事项
 
-1. **访问控制**
+## 访问控制
 
 ```
 # 配置Windows防火墙
 New-NetFirewallRule -DisplayName "DeepSeek" -Direction Inbound -LocalPort 8080 -Protocol TCP -Action Allow -Profile Any
 ```
 
-1. **模型加密**
+## 模型加密
 
 ```
 # 使用Windows DPAPI加密模型
@@ -207,7 +207,7 @@ encrypted_model = cipher_suite.encrypt(model_bytes)
 
 ---
 
-**补充说明**：
+# 补充说明
 
 - 对于 13B 及以上模型，建议使用 Windows Server 2022 数据中心版
 - 推荐使用 WSL2 作为备用方案，当遇到驱动兼容性问题时
