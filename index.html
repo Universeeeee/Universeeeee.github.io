@@ -89,12 +89,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/1.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
           <li class="item" data-background-image="https://Universeeeee.github.io/images/background/3.jpg"></li>
+          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
         </ul>
       </div>
     </header>
@@ -177,28 +177,6 @@ GPT 出来爆火了一轮，不仅有心灵导师、代码生成器、文案创�
 
           
 <section class="item">
-  <div class="cover" data-background-image="/architecture-design/cover.jpg">
-    <h2 class="title">架构设计</h2>
-  </div>
-  <div class="info">
-    <div class="ribbon"><a href="/categories/architecture-design/" itemprop="url" title="架构设计">架构设计</a></div>
-    <div class="inner">
-        <ul class="posts">
-            <li><a title="消息队列" href="/categories/architecture-design/mq/">消息队列</a></li>
-            <li><a title="解决重复支付等类似问题--幂等数原理及工作方法" href="/architecture-design/pay/">解决重复支付等类似问题--幂等数原理及工作方法</a></li>
-        </ul>
-        <div class="meta footer">
-          <span>
-            <i class="ic i-file"></i>1 个子项，3 篇文章
-          </span>
-        </div>
-        <a href="/categories/architecture-design/" itemprop="url" title="架构设计" class="btn">more...</a>
-    </div>
-  </div>
-</section>
-
-          
-<section class="item">
   <div class="cover" data-background-image="/bug-record/cover.jpg">
     <h2 class="title">Bug记录</h2>
   </div>
@@ -219,9 +197,73 @@ GPT 出来爆火了一轮，不仅有心灵导师、代码生成器、文案创�
   </div>
 </section>
 
+          
+<section class="item">
+  <div class="cover" data-background-image="/architecture-design/cover.jpg">
+    <h2 class="title">架构设计</h2>
+  </div>
+  <div class="info">
+    <div class="ribbon"><a href="/categories/architecture-design/" itemprop="url" title="架构设计">架构设计</a></div>
+    <div class="inner">
+        <ul class="posts">
+            <li><a title="消息队列" href="/categories/architecture-design/mq/">消息队列</a></li>
+            <li><a title="解决重复支付等类似问题--幂等数原理及工作方法" href="/architecture-design/pay/">解决重复支付等类似问题--幂等数原理及工作方法</a></li>
+        </ul>
+        <div class="meta footer">
+          <span>
+            <i class="ic i-file"></i>1 个子项，4 篇文章
+          </span>
+        </div>
+        <a href="/categories/architecture-design/" itemprop="url" title="架构设计" class="btn">more...</a>
+    </div>
+  </div>
+</section>
+
       </div>
     <h2 class="divider">文章列表</h2>
     <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/architecture-design/mq/MQHA/" itemprop="url" title="消息队列高可用设计"><img data-src="/images/cover/mq3.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2025-02-20 22:37:55">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2025-02-20T22:37:55+08:00">2025-02-20</time>
+  </span>
+</div>
+
+    <h3><a href="/architecture-design/mq/MQHA/" itemprop="url" title="消息队列高可用设计">消息队列高可用设计</a></h3>
+    <div class="excerpt">
+        以下从通用设计原则和主流消息中间件的高可用实现两个维度展开，结合不同 MQ 的特性说明如何保证高可用性。
+
+# 一、通用高可用设计原则
+无论使用哪种消息中间件，高可用性的核心逻辑都围绕以下几点：
+
+多副本机制：数据在多个节点冗余存储，避免单点故障。
+自动故障转移：主节点故障时，从节点能快速接管服务。
+数据持久化：消息落盘存储，确保宕机后数据不丢失。
+集群化部署：通过集群分散负载，提升系统容错能力。
+客户端容错：消费者 / 生产者支持重试、自动重连等机制。
+
+# 二、主流消息中间件的高可用实现
+以下针对不同消息中间件，分析其高可用设计及适用场景：
+# 1....
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/categories/architecture-design/mq/" itemprop="url" title="消息队列"><i class="ic i-flag"></i>消息队列</a>
+      </span>
+    </div>
+    <a href="/architecture-design/mq/MQHA/" itemprop="url" title="消息队列高可用设计" class="btn">more...</a>
+  </div>
+</article>
+
         
 <article class="item">
   <div class="cover">
@@ -445,7 +487,7 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">6</span>
+        <span class="count">7</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -527,18 +569,6 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
-</div>
-
-    <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/ai/" title="分类于 AI">AI</a>
 </div>
 
@@ -549,10 +579,24 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
+    <span><a href="/architecture-design/mq/MQHA/" title="消息队列高可用设计">消息队列高可用设计</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
+</div>
+
+    <span><a href="/architecture-design/mq/mqChoose/" title="消息队列选型研究">消息队列选型研究</a></span>
   </li>
 
       
@@ -573,6 +617,16 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
 </div>
 
     <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
   </li>
 
       
@@ -609,13 +663,13 @@ A 系统处理完了直接返回成功了，都以为这个请求就成功了；
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">13k 字</span>
+    <span title="站点总字数">15k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">12 分钟</span>
+    <span title="站点阅读时长">14 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

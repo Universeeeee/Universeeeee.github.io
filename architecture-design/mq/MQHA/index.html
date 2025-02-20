@@ -25,12 +25,12 @@
 
   
 
-<link rel="canonical" href="http://universeeeee.github.io/bug-record/initMethodF/">
+<link rel="canonical" href="http://universeeeee.github.io/architecture-design/mq/MQHA/">
 
 
 
   <title>
-解决init method failed问题 - Bug记录 |
+消息队列高可用设计 - 消息队列 - 架构设计 |
 YUniverse = When the stars shine = Blog</title>
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -58,16 +58,16 @@ YUniverse = When the stars shine = Blog</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">解决init method failed问题
+  <h1 itemprop="name headline">消息队列高可用设计
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2025-02-16 18:38:17">
+  <span class="item" title="创建时间：2025-02-20 22:37:55">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2025-02-16T18:38:17+08:00">2025-02-16</time>
+    <time itemprop="dateCreated datePublished" datetime="2025-02-20T22:37:55+08:00">2025-02-20</time>
   </span>
 </div>
 
@@ -99,7 +99,7 @@ YUniverse = When the stars shine = Blog</title>
 
       </div>
       <div id="imgs" class="pjax">
-          <img src="/images/cover/cake1.jpg">
+          <img src="/images/cover/mq3.jpg">
       </div>
     </header>
     <div id="waves">
@@ -124,12 +124,15 @@ YUniverse = When the stars shine = Blog</title>
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
 <span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/bug-record/" itemprop="item" rel="index" title="分类于 Bug记录"><span itemprop="name">Bug记录</span></a>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/architecture-design/" itemprop="item" rel="index" title="分类于 架构设计"><span itemprop="name">架构设计</span></a>
 <meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/architecture-design/mq/" itemprop="item" rel="index" title="分类于 消息队列"><span itemprop="name">消息队列</span></a>
+<meta itemprop="position" content="2" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="http://universeeeee.github.io/bug-record/initMethodF/">
+  <link itemprop="mainEntityOfPage" href="http://universeeeee.github.io/architecture-design/mq/MQHA/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -144,28 +147,155 @@ YUniverse = When the stars shine = Blog</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="错误背景"><a class="markdownIt-Anchor" href="#错误背景">#</a> 错误背景</h1>
-<p>笔者在建一个新的 Spring cloud 项目时，出现的报错提示如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invocation of init method failed； nested exception is java.lang.IllegalArgumentException: Property</span><br></pre></td></tr></table></figure>
-<h1 id="错误原因"><a class="markdownIt-Anchor" href="#错误原因">#</a> 错误原因</h1>
-<p>经过网上搜索后，主要说是 controller 和 xml 有重名方法，或者启动类有问题，如 @SpringBootApplication () 的括号里不能有东西。<br>
-检查后，锁定到是我在 config 类里已经写了 @MapperScan () 的注解：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.demo.service.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBatisPlusConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法</h1>
-<p><strong>那么启动类里的 @MapperScan () 需要更改成 @ComponentScan ()。</strong><br>
-启动类里修改为：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.demo.service.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EduApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(EduApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者直接把 config 的 @MapperScan 删了，但感觉会失去配 config 的一些意义</p>
-<p>修改后，即不再报错，但是项目还有点其他小问题</p>
-<h1 id="总结"><a class="markdownIt-Anchor" href="#总结">#</a> 总结</h1>
-<h2 id="componentscan"><a class="markdownIt-Anchor" href="#componentscan">#</a> @ComponentScan</h2>
-<p>组件扫描注解，用来扫描 @Controller @Service @Repository 这类，主要就是定义扫描的路径从中找出标志了需要装配的类到 Spring 容器中</p>
-<h2 id="mapperscan"><a class="markdownIt-Anchor" href="#mapperscan">#</a> @MapperScan</h2>
-<p>扫描 mapper 类的注解，就不用在每个 mapper 类上加 @MapperScan 了</p>
-<h2 id="注意"><a class="markdownIt-Anchor" href="#注意">#</a> 注意</h2>
-<p>这两个注解是可以同时使用的，但是需要改为 @MapperScan（basePackages = {}）的形式。<br>
-或者只使用 @MapperScan（）去扫描 mapper 包，让项目启动自己去扫描 swagger 配置类的包。<br>
-<strong>同一个类扫描的是同一路径会产生错误。</strong></p>
+    <p>以下从<strong>通用设计原则</strong>和<strong>主流消息中间件的高可用实现</strong>两个维度展开，结合不同 MQ 的特性说明如何保证高可用性。</p>
+<hr>
+<h2 id="一-通用高可用设计原则"><a class="markdownIt-Anchor" href="#一-通用高可用设计原则">#</a> 一、通用高可用设计原则</h2>
+<p>无论使用哪种消息中间件，高可用性的核心逻辑都围绕以下几点：</p>
+<ol>
+<li><strong>多副本机制</strong>：数据在多个节点冗余存储，避免单点故障。</li>
+<li><strong>自动故障转移</strong>：主节点故障时，从节点能快速接管服务。</li>
+<li><strong>数据持久化</strong>：消息落盘存储，确保宕机后数据不丢失。</li>
+<li><strong>集群化部署</strong>：通过集群分散负载，提升系统容错能力。</li>
+<li><strong>客户端容错</strong>：消费者 / 生产者支持重试、自动重连等机制。</li>
+</ol>
+<hr>
+<h2 id="二-主流消息中间件的高可用实现"><a class="markdownIt-Anchor" href="#二-主流消息中间件的高可用实现">#</a> 二、主流消息中间件的高可用实现</h2>
+<p>以下针对不同消息中间件，分析其高可用设计及适用场景：</p>
+<h3 id="1-kafka"><a class="markdownIt-Anchor" href="#1-kafka">#</a> 1. <strong>Kafka</strong></h3>
+<p><strong>高可用机制</strong>：</p>
+<ul>
+<li><strong>分区副本（Replication）</strong>：
+<ul>
+<li>每个 Topic 分区有多个副本（Replica），副本分布在不同的 Broker 上。</li>
+<li>一个副本为 Leader（负责读写），其他副本为 Follower（同步数据）。</li>
+</ul>
+</li>
+<li><strong>ISR 机制（In-Sync Replicas）</strong>：
+<ul>
+<li>Leader 维护一个 “同步副本列表”（ISR），只有 ISR 中的副本有资格被选举为 Leader。</li>
+<li>若 Leader 宕机，Controller（通过 ZooKeeper 选举）会从 ISR 中选择新 Leader。</li>
+</ul>
+</li>
+<li><strong>Controller 故障转移</strong>：
+<ul>
+<li>ZooKeeper 监控 Broker 存活状态，触发 Controller 重新选举。</li>
+</ul>
+</li>
+</ul>
+<p><strong>故障恢复流程</strong>：</p>
+<ol>
+<li>Broker 宕机 → ZooKeeper 感知并通知 Controller。</li>
+<li>Controller 从 ISR 中选举新 Leader。</li>
+<li>生产者和消费者自动切换到新 Leader。</li>
+</ol>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li><strong>高吞吐、大数据量</strong>：如日志采集、实时流处理。</li>
+<li><strong>要求强顺序性</strong>：同一分区内消息有序。</li>
+</ul>
+<p><strong>总结</strong>：</p>
+<blockquote>
+<p>“Kafka 通过分区多副本和 ISR 机制保证高可用。每个分区有一个 Leader 和多个 Follower，Leader 负责处理读写请求，Follower 同步数据。当 Leader 宕机时，Controller 会从 ISR 中选择新的 Leader。此外，ZooKeeper 负责监控 Broker 状态和协调选举，确保服务快速恢复。”</p>
+</blockquote>
+<hr>
+<h3 id="2-rabbitmq"><a class="markdownIt-Anchor" href="#2-rabbitmq">#</a> 2. <strong>RabbitMQ</strong></h3>
+<p><strong>高可用机制</strong>：</p>
+<ul>
+<li><strong>普通集群模式</strong>：
+<ul>
+<li>队列元数据（如队列名称、绑定关系）在所有节点共享，但队列数据仅存储在单个节点（无副本）。</li>
+<li><strong>缺点</strong>：节点故障可能导致队列不可用。</li>
+</ul>
+</li>
+<li><strong>镜像队列（Mirrored Queues）</strong>：
+<ul>
+<li>队列数据在多个节点间同步，形成主从结构。</li>
+<li>生产者 / 消费者连接主节点，从节点自动同步数据。</li>
+<li>主节点宕机后，RabbitMQ 自动选举新的主节点（基于最早启动的镜像节点）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>故障恢复流程</strong>：</p>
+<ol>
+<li>主节点宕机 → 客户端连接中断。</li>
+<li>RabbitMQ 选举新的主节点（从镜像队列中）。</li>
+<li>客户端重新连接到新主节点。</li>
+</ol>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li><strong>复杂路由需求</strong>：如需要灵活的路由规则（Topic/Header Exchange）。</li>
+<li><strong>中小规模集群</strong>：镜像队列对网络和资源要求较高。</li>
+</ul>
+<p><strong>总结</strong>：</p>
+<blockquote>
+<p>“RabbitMQ 的高可用依赖于镜像队列。通过将队列数据复制到多个节点，当主节点故障时，系统会自动选举新的主节点。但需要注意，镜像队列会增加资源消耗，且网络分区问题可能导致脑裂，因此需要合理配置集群策略。”</p>
+</blockquote>
+<hr>
+<h3 id="3-rocketmq"><a class="markdownIt-Anchor" href="#3-rocketmq">#</a> 3. <strong>RocketMQ</strong></h3>
+<p><strong>高可用机制</strong>：</p>
+<ul>
+<li><strong>主从架构（Master-Slave）</strong>：
+<ul>
+<li>每个 Broker 组包含一个 Master 和多个 Slave。</li>
+<li>Master 处理读写请求，Slave 仅同步数据（异步 / 同步复制）。</li>
+</ul>
+</li>
+<li><strong>Dledger 协议（Raft 变种）</strong>：
+<ul>
+<li>基于 Raft 算法实现自动选主，确保主从切换一致性。</li>
+<li>数据写入需多数节点确认，保证强一致性。</li>
+</ul>
+</li>
+<li><strong>NameServer 集群</strong>：
+<ul>
+<li>无状态设计，多节点部署，负责管理 Broker 路由信息。</li>
+</ul>
+</li>
+</ul>
+<p><strong>故障恢复流程</strong>：</p>
+<ol>
+<li>Master 宕机 → Dledger 协议触发选举，Slave 升级为 Master。</li>
+<li>NameServer 更新路由信息，客户端重试获取新路由。</li>
+</ol>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li><strong>金融级场景</strong>：要求高可靠、强一致性的消息传输。</li>
+<li><strong>事务消息</strong>：支持分布式事务消息。</li>
+</ul>
+<p><strong>总结</strong>：</p>
+<blockquote>
+<p>“RocketMQ 采用主从架构和 Dledger 协议保障高可用。Master 负责处理读写，Slave 同步数据。当 Master 宕机时，Dledger 基于 Raft 算法选举新 Master，确保数据一致性。此外，NameServer 集群无状态设计，避免单点故障。”</p>
+</blockquote>
+<hr>
+<h3 id="4-activemq"><a class="markdownIt-Anchor" href="#4-activemq">#</a> 4. <strong>ActiveMQ</strong></h3>
+<p><strong>高可用机制</strong>：</p>
+<ul>
+<li><strong>主从模式（Master-Slave）</strong>：
+<ul>
+<li><strong>共享存储模式</strong>：主从节点共享存储（如 JDBC 数据库、共享文件系统），主节点负责写入，从节点热备。</li>
+<li><strong>网络连接恢复</strong>：客户端支持故障转移协议（ <code>failover://</code> ），自动重连到其他节点。</li>
+</ul>
+</li>
+<li><strong>LevelDB 存储</strong>：
+<ul>
+<li>基于本地 LevelDB 存储实现数据持久化，支持快速恢复。</li>
+</ul>
+</li>
+</ul>
+<p><strong>故障恢复流程</strong>：</p>
+<ol>
+<li>主节点宕机 → 客户端通过 <code>failover</code>  协议尝试连接其他节点。</li>
+<li>从节点检测到主节点失效后，接管服务并升级为主节点。</li>
+</ol>
+<p><strong>适用场景</strong>：</p>
+<ul>
+<li><strong>传统企业应用</strong>：对 JMS 协议兼容性要求高。</li>
+<li><strong>中小规模消息队列</strong>：部署和维护相对简单。</li>
+</ul>
+<p><strong>总结</strong>：</p>
+<blockquote>
+<p>“ActiveMQ 的高可用主要通过主从架构实现。主节点处理请求，从节点通过共享存储或 LevelDB 同步数据。当主节点故障时，客户端通过 <code>failover</code>  协议自动切换到从节点。但需注意，共享存储可能成为性能瓶颈。”</p>
+</blockquote>
 
   </div>
 
@@ -177,7 +307,7 @@ YUniverse = When the stars shine = Blog</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2025-02-16 18:43:40" itemprop="dateModified" datetime="2025-02-16T18:43:40+08:00">2025-02-16</time>
+    <time title="修改时间：2025-02-20 22:41:39" itemprop="dateModified" datetime="2025-02-20T22:41:39+08:00">2025-02-20</time>
   </span>
 </div>
 
@@ -208,7 +338,7 @@ YUniverse = When the stars shine = Blog</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://universeeeee.github.io/bug-record/initMethodF/" title="解决init method failed问题">http://universeeeee.github.io/bug-record/initMethodF/</a>
+    <a href="http://universeeeee.github.io/architecture-design/mq/MQHA/" title="消息队列高可用设计">http://universeeeee.github.io/architecture-design/mq/MQHA/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -227,22 +357,14 @@ YUniverse = When the stars shine = Blog</title>
     <div class="item left">
       
 
-  <a href="/bug-record/disconnectVM/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;cover&#x2F;strawberry.jpg" title="解决Disconnected from the target VM">
+  <a href="/ai/aiDeploy/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;cover&#x2F;ai1.jpg" title="DeepSeek本地部署">
   <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> Bug记录</span>
-  <h3>解决Disconnected from the target VM</h3>
+  <span class="category"><i class="ic i-flag"></i> AI</span>
+  <h3>DeepSeek本地部署</h3>
   </a>
 
     </div>
     <div class="item right">
-      
-
-  <a href="/architecture-design/mq/mqWhy/" itemprop="url" rel="next" data-background-image="&#x2F;images&#x2F;cover&#x2F;mq2.jpg" title="消息队列的作用">
-  <span class="type">下一篇</span>
-  <span class="category"><i class="ic i-flag"></i> 消息队列</span>
-  <h3>消息队列的作用</h3>
-  </a>
-
     </div>
 </div>
 
@@ -259,11 +381,11 @@ YUniverse = When the stars shine = Blog</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text"> 错误背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.</span> <span class="toc-text"> 错误原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text"> 解决方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text"> 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#componentscan"><span class="toc-number">4.1.</span> <span class="toc-text"> @ComponentScan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mapperscan"><span class="toc-number">4.2.</span> <span class="toc-text"> @MapperScan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">4.3.</span> <span class="toc-text"> 注意</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E9%80%9A%E7%94%A8%E9%AB%98%E5%8F%AF%E7%94%A8%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text"> 一、通用高可用设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E4%B8%BB%E6%B5%81%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text"> 二、主流消息中间件的高可用实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-kafka"><span class="toc-number">2.1.</span> <span class="toc-text"> 1. Kafka</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-rabbitmq"><span class="toc-number">2.2.</span> <span class="toc-text"> 2. RabbitMQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-rocketmq"><span class="toc-number">2.3.</span> <span class="toc-text"> 3. RocketMQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-activemq"><span class="toc-number">2.4.</span> <span class="toc-text"> 4. ActiveMQ</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/bug-record/disconnectVM/" rel="bookmark" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></li><li class="active"><a href="/bug-record/initMethodF/" rel="bookmark" title="解决init method failed问题">解决init method failed问题</a></li>
+          <li><a href="/architecture-design/mq/mqChoose/" rel="bookmark" title="消息队列选型研究">消息队列选型研究</a></li><li><a href="/architecture-design/mq/mqWhy/" rel="bookmark" title="消息队列的作用">消息队列的作用</a></li><li class="active"><a href="/architecture-design/mq/MQHA/" rel="bookmark" title="消息队列高可用设计">消息队列高可用设计</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -335,12 +457,10 @@ YUniverse = When the stars shine = Blog</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/bug-record/disconnectVM/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/architecture-design/mq/mqWhy/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -362,10 +482,10 @@ YUniverse = When the stars shine = Blog</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+<a href="/categories/ai/" title="分类于 AI">AI</a>
 </div>
 
-    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
+    <span><a href="/ai/aiDeploy/" title="DeepSeek本地部署">DeepSeek本地部署</a></span>
   </li>
 
       
@@ -373,9 +493,11 @@ YUniverse = When the stars shine = Blog</title>
     
 <div class="breadcrumb">
 <a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
+    <span><a href="/architecture-design/mq/mqWhy/" title="消息队列的作用">消息队列的作用</a></span>
   </li>
 
       
@@ -386,6 +508,16 @@ YUniverse = When the stars shine = Blog</title>
 </div>
 
     <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
   </li>
 
       
@@ -405,21 +537,9 @@ YUniverse = When the stars shine = Blog</title>
     
 <div class="breadcrumb">
 <a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/architecture-design/mq/mqWhy/" title="消息队列的作用">消息队列的作用</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/ai/" title="分类于 AI">AI</a>
-</div>
-
-    <span><a href="/ai/aiDeploy/" title="DeepSeek本地部署">DeepSeek本地部署</a></span>
+    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
   </li>
 
       
@@ -474,7 +594,7 @@ YUniverse = When the stars shine = Blog</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'bug-record/initMethodF/',
+    path: 'architecture-design/mq/MQHA/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"
