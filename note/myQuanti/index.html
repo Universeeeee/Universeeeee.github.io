@@ -25,11 +25,13 @@
 
   
 
-<link rel="canonical" href="http://universeeeee.github.io/categories/architecture-design/mq/">
+<link rel="canonical" href="http://universeeeee.github.io/note/myQuanti/">
 
 
 
-  <title>分类：消息队列 | YUniverse = When the stars shine = Blog</title>
+  <title>
+我自己的量化系统① - note |
+YUniverse = When the stars shine = Blog</title>
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
   <div id="loading">
@@ -56,9 +58,19 @@
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">
-    分类于"消息队列"的文章
+  <h1 itemprop="name headline">我自己的量化系统①
   </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2025-05-23 14:01:52">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-05-23T14:01:52+08:00">2025-05-23</time>
+  </span>
+</div>
+
 
           </div>
         </div>
@@ -87,14 +99,7 @@
 
       </div>
       <div id="imgs" class="pjax">
-        <ul>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/3.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/5.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/6.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/1.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/4.jpg"></li>
-          <li class="item" data-background-image="https://Universeeeee.github.io/images/background/2.jpg"></li>
-        </ul>
+          <img src="/images/cover/quanti.jpg">
       </div>
     </header>
     <div id="waves">
@@ -114,76 +119,131 @@
       <div class="inner">
         <div id="main" class="pjax">
           
-  <div class="collapse wrap">
-    <h2 class="item header">
-      <a href="/categories">全部</a>
-        <small>/</small> <a href="/categories/architecture-design/">架构设计</a>
-      <small>/</small>
-      消息队列
-      <small>分类</small>
-    </h2>
-        <article class="item normal" itemscope itemtype="http://schema.org/Article">
-          <div class="meta">
-            <time itemprop="dateCreated"
-                  datetime="2025-02-20T22:37:55+08:00"
-                  content="2025-02-20">
-              02-20
-            </time>
-          </div>
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/note/" itemprop="item" rel="index" title="分类于 note"><span itemprop="name">note</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
 
-          <div class="title">
-              <a href="/architecture-design/mq/MQHA/" itemprop="url">
-                <span itemprop="name">消息队列高可用设计</span>
-              </a>
-          </div>
-        </article>
-        <article class="item normal" itemscope itemtype="http://schema.org/Article">
-          <div class="meta">
-            <time itemprop="dateCreated"
-                  datetime="2025-02-17T18:15:32+08:00"
-                  content="2025-02-17">
-              02-17
-            </time>
-          </div>
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://universeeeee.github.io/note/myQuanti/">
 
-          <div class="title">
-              <a href="/architecture-design/mq/mqWhy/" itemprop="url">
-                <span itemprop="name">消息队列的作用</span>
-              </a>
-          </div>
-        </article>
-        <article class="item normal" itemscope itemtype="http://schema.org/Article">
-          <div class="meta">
-            <time itemprop="dateCreated"
-                  datetime="2025-02-15T23:15:45+08:00"
-                  content="2025-02-15">
-              02-15
-            </time>
-          </div>
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Bianca">
+    <meta itemprop="description" content="Blog, 年初把博客重构了，很多以前的文章也需要完善内容再上传，慢慢记录技术与生活吧(^▽^)">
+  </span>
 
-          <div class="title">
-              <a href="/architecture-design/mq/mqChoose/" itemprop="url">
-                <span itemprop="name">消息队列选型研究</span>
-              </a>
-          </div>
-        </article>
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="When the stars shine">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="起源"><a class="markdownIt-Anchor" href="#起源">#</a> 起源</h1>
+<p>最开始是想试一下高频交易，因为以前投资都是中长期，放着没看，其实有些还是可以做做 T 和波段，但是目前市面上的券商 app 没那么好看做 t 的收益，所以给自己做一下交易记录系统。<br>
+但既然都做交易系统了，那干脆做一个量化系统算了，顺便也就优化一下自己的投资策略。</p>
+<h1 id="框架"><a class="markdownIt-Anchor" href="#框架">#</a> 框架</h1>
+<p>设计的基础管理系统是以 Java，Springcloud 来做，量化部分用 python，前端就 vue3+ts 即可</p>
+<h1 id="现状"><a class="markdownIt-Anchor" href="#现状">#</a> 现状</h1>
+<p>已经做了部分记录功能和交易策略，还在不断优化中，做这个确实是让我锻炼了下前端，以前只专注于后端和部署以及一些运维知识，总的来说还是围绕后端相关，趁此练练前端技术，希望能尽早成为一个优秀的全栈工程师吧<sup>_</sup></p>
+<h1 id="其他"><a class="markdownIt-Anchor" href="#其他">#</a> 其他</h1>
+<p>目前先不把一些具体框架和系统写在 blog 里，因为从自己的实践出发，无论是选股还是交易，不同的行业不同的市场情境需要考虑的参数，或者每个参数的权重都得动态调整，我目前并不觉得我已经做出了一个相对完善的量化系统，还有太多东西需要学习需要测试需要完善了，实在是任重道远…</p>
 
   </div>
 
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2025-05-23 23:22:07" itemprop="dateModified" datetime="2025-05-23T23:22:07+08:00">2025-05-23</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="Bianca 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="Bianca 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>Bianca <i class="ic i-at"><em>@</em></i>When the stars shine
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://universeeeee.github.io/note/myQuanti/" title="我自己的量化系统①">http://universeeeee.github.io/note/myQuanti/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
   
 
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/architecture-design/mq/MQHA/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;cover&#x2F;mq3.jpg" title="消息队列高可用设计">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 消息队列</span>
+  <h3>消息队列高可用设计</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
 
 
         </div>
         <div id="sidebar">
           
+
 <div class="inner">
 
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%B7%E6%BA%90"><span class="toc-number">1.</span> <span class="toc-text"> 起源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-number">2.</span> <span class="toc-text"> 框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%B0%E7%8A%B6"><span class="toc-number">3.</span> <span class="toc-text"> 现状</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">4.</span> <span class="toc-text"> 其他</span></a></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/note/myQuanti/" rel="bookmark" title="我自己的量化系统①">我自己的量化系统①</a></li>
+        </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
         <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -263,6 +323,7 @@
   </ul>
 </div>
 
+
         </div>
         <div class="dimmer"></div>
       </div>
@@ -283,17 +344,7 @@
 <a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/architecture-design/mq/MQHA/" title="消息队列高可用设计">消息队列高可用设计</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
-</div>
-
-    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
+    <span><a href="/architecture-design/mq/mqWhy/" title="消息队列的作用">消息队列的作用</a></span>
   </li>
 
       
@@ -305,27 +356,7 @@
 <a href="/categories/architecture-design/mq/" title="分类于 消息队列">消息队列</a>
 </div>
 
-    <span><a href="/architecture-design/mq/mqWhy/" title="消息队列的作用">消息队列的作用</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
-</div>
-
-    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
-</div>
-
-    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
+    <span><a href="/architecture-design/mq/MQHA/" title="消息队列高可用设计">消息队列高可用设计</a></span>
   </li>
 
       
@@ -348,6 +379,36 @@
 </div>
 
     <span><a href="/note/myQuanti/" title="我自己的量化系统①">我自己的量化系统①</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/architecture-design/" title="分类于 架构设计">架构设计</a>
+</div>
+
+    <span><a href="/architecture-design/pay/" title="解决重复支付等类似问题--幂等数原理及工作方法">解决重复支付等类似问题--幂等数原理及工作方法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/disconnectVM/" title="解决Disconnected from the target VM">解决Disconnected from the target VM</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/bug-record/" title="分类于 Bug记录">Bug记录</a>
+</div>
+
+    <span><a href="/bug-record/initMethodF/" title="解决init method failed问题">解决init method failed问题</a></span>
   </li>
 
       
@@ -400,7 +461,7 @@
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: 'categories/architecture-design/mq/',
+    path: 'note/myQuanti/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"
