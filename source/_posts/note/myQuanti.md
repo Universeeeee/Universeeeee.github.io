@@ -4,7 +4,7 @@ title: 我自己的量化系统①
 cover: images/cover/quanti.jpg
 
 categories:
-  - [note]
+  - [NOTE]
 ---
 
 # 起源

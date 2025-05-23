@@ -72,7 +72,7 @@ category_map:
   Java: java
   计算机科学: computer-science
   Bug记录: bug-record
-  杂记: note
+  NOTE: note
   架构设计: architecture-design
   消息队列: mq
   AI: ai
